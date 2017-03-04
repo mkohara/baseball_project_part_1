@@ -18,7 +18,7 @@
 
       <% @schedules.each do |schedule| %>
       <tr>
-        <td><%= schedule.home_team_id %></td>
+        <td><%= schedule.home_team.divison_league %></td>
         <td><%= schedule.away_team_id %></td>
         <td><%= schedule.location_id %></td>
         <td><%= schedule.event_date %></td>
