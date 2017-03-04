@@ -1,0 +1,1 @@
+{"name":"Baseball Project Part 1","repository":"https://github.com/mkohara/baseball_project_part_1","env":{"CLOUDINARY_CLOUD_NAME":{"required":true},"CLOUDINARY_API_KEY":{"required":true},"CLOUDINARY_API_SECRET":{"required":true},"ROLLBAR_ACCESS_TOKEN":{"required":true}}}
