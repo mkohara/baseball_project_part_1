@@ -1,6 +1,8 @@
 class Schedule < ApplicationRecord
   # Direct associations
 
+  belongs_to :location
+
   belongs_to :away_team,
              :class_name => "Team"
 
