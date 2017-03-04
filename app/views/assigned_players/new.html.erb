@@ -19,7 +19,7 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for scout_id -->
-      <input type="hidden" name="scout_id" value="<%= current_user.id %>">
+      <input type="hidden" name="scout_id" value="<%= current_admin_user %>">
 
       <!-- Label and input for player_id -->
       <div class="form-group">
