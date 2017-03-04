@@ -3,6 +3,114 @@
     Schedules
     <a href="/schedules/new" class="btn btn-lg btn-success">New Schedule</a>
   </h1>
+</div><div class="row mb-1">
+  <div class="col-md-12">
+    <%= search_form_for @q, :class => collapse_search_form, :id => "schedules_filters" do |f| %>
+      <p class="lead">Narrow results:</p>
+
+        <div class="form-group">
+          <%= f.label :event_date, "Event date" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='event_dategteqPicker'>
+                  <%= f.text_field :event_date_gteq, :class => "form-control", :placeholder => "Event date greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='event_datelteqPicker'>
+                  <%= f.text_field :event_date_lteq, :class => "form-control", :placeholder => "Event date less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#event_dategteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#event_datelteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#event_dategteqPicker').on("dp.change", function (e) {
+                  $('#event_datelteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#event_datelteqPicker').on("dp.change", function (e) {
+                  $('#event_dategteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+<div class="form-group">
+          <%= f.label :created_at, "Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='created_atgteqPicker'>
+                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='created_atlteqPicker'>
+                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#created_atgteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atlteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atgteqPicker').on("dp.change", function (e) {
+                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#created_atlteqPicker').on("dp.change", function (e) {
+                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+        <div class="form-group">
+      <%= f.label :home_team_divison_league_cont, "Team divison_league contains" %>
+      <%= f.text_field :home_team_divison_league_cont, :class => "form-control", :placeholder => "Team divison_league contains" %>
+    </div>
+
+<div class="form-group">
+      <%= f.label :away_team_divison_league_cont, "Team divison_league contains" %>
+      <%= f.text_field :away_team_divison_league_cont, :class => "form-control", :placeholder => "Team divison_league contains" %>
+    </div>
+
+<div class="form-group">
+      <%= f.label :location_field_cont, "Location field contains" %>
+      <%= f.text_field :location_field_cont, :class => "form-control", :placeholder => "Location field contains" %>
+    </div>
+
+      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+      <a href="/schedules" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <% end %>
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#schedules_filters">
+      Show Filters
+    </a>
+  </div>
 </div>
 
 <div class="row">
