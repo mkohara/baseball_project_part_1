@@ -48,8 +48,6 @@ class AssignedPlayersController < ApplicationController
 
   def update
     @assigned_player = AssignedPlayer.find(params[:id])
-
-    @assigned_player.scout_id = params[:scout_id]
     @assigned_player.player_id = params[:player_id]
     @assigned_player.name = params[:name]
 
