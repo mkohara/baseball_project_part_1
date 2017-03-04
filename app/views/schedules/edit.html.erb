@@ -33,7 +33,7 @@
           Away team
         </label>
 
-        <input type="text" id="away_team_id" name="away_team_id" placeholder="Away team" class="form-control" value="<%= @schedule.away_team_id %>">
+        <%= select_tag(:away_team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @schedule.away_team_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for location_id -->
