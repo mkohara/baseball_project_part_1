@@ -23,11 +23,10 @@
 
       <!-- Label and input for player_id -->
       <div class="form-group">
-        <label for="player_id" class="control-label">
+        <label for="player_id" class="control-label" >
           Player
         </label>
-
-        <%= select_tag(:player_id, options_from_collection_for_select(Player.all, :id, :scout_id, @assigned_player.player_id), :class => "form-control") %>
+        <%= select_tag(:player_id, options_from_collection_for_select(Player.all, :id, :name,  @assigned_player.player_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for name -->
