@@ -57,6 +57,47 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_schedule" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for home_team_id -->
+      <div class="form-group">
+        <label for="home_team_id" class="control-label">
+          Home team
+        </label>
+
+        <%= select_tag(:home_team_id, options_from_collection_for_select(Team.all, :id, :divison_league), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for away_team_id -->
+      <div class="form-group">
+        <label for="away_team_id" class="control-label">
+          Away team
+        </label>
+
+        <%= select_tag(:away_team_id, options_from_collection_for_select(Team.all, :id, :divison_league), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for location_id -->
+      <input type="hidden" name="location_id" value="<%= @location.id %>">
+
+      <!-- Label and input for event_date -->
+      <div class="form-group">
+        <label for="event_date" class="control-label">
+          Event date
+        </label>
+
+        <input type="text" id="event_date" name="event_date" placeholder="Event date" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Schedule
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -88,6 +129,47 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_team" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for divison_league -->
+      <div class="form-group">
+        <label for="divison_league" class="control-label">
+          Divison league
+        </label>
+
+        <input type="text" id="divison_league" name="divison_league" placeholder="Divison league" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for schedule -->
+      <div class="form-group">
+        <label for="schedule" class="control-label">
+          Schedule
+        </label>
+
+        <input type="text" id="schedule" name="schedule" placeholder="Schedule" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for when_play -->
+      <div class="form-group">
+        <label for="when_play" class="control-label">
+          When play
+        </label>
+
+        <input type="text" id="when_play" name="when_play" placeholder="When play" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for location_id -->
+      <input type="hidden" name="location_id" value="<%= @location.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Team
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

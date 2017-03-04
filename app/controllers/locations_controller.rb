@@ -6,6 +6,8 @@ class LocationsController < ApplicationController
   end
 
   def show
+    @team = Team.new
+    @schedule = Schedule.new
     @location = Location.find(params[:id])
 
     render("locations/show.html.erb")
