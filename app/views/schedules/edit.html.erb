@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @schedule.errors.any? %>
+  <% @schedule.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Schedule #<%= @schedule.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_schedule/<%= @schedule.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for home_team_id -->
+      <div class="form-group">
+        <label for="home_team_id" class="control-label">
+          Home team
+        </label>
+
+        <input type="text" id="home_team_id" name="home_team_id" placeholder="Home team" class="form-control" value="<%= @schedule.home_team_id %>">
+      </div>
+
+      <!-- Label and input for away_team_id -->
+      <div class="form-group">
+        <label for="away_team_id" class="control-label">
+          Away team
+        </label>
+
+        <input type="text" id="away_team_id" name="away_team_id" placeholder="Away team" class="form-control" value="<%= @schedule.away_team_id %>">
+      </div>
+
+      <!-- Label and input for location_id -->
+      <div class="form-group">
+        <label for="location_id" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @schedule.location_id %>">
+      </div>
+
+      <!-- Label and input for event_date -->
+      <div class="form-group">
+        <label for="event_date" class="control-label">
+          Event date
+        </label>
+
+        <input type="text" id="event_date" name="event_date" placeholder="Event date" class="form-control" value="<%= @schedule.event_date %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Schedule
+      </button>
+      or
+      <a href="/schedules/<%= @schedule.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
