@@ -35,3 +35,96 @@
     </div>
   </div>
 </div>
+
+<!-- A Player has many notes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Notes
+      </li>
+
+      <% @player.notes.each do |note| %>
+        <li class="list-group-item">
+          <a href="/notes/<%= note.id %>">
+            <%= note.player_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/notes/<%= note.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/notes/<%= note.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_note/<%= note.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Player has many assigned_to_a_scout -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Assigned To A Scout
+      </li>
+
+      <% @player.assigned_to_a_scout.each do |assigned_player| %>
+        <li class="list-group-item">
+          <a href="/assigned_players/<%= assigned_player.id %>">
+            <%= assigned_player.scout_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/assigned_players/<%= assigned_player.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/assigned_players/<%= assigned_player.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_assigned_player/<%= assigned_player.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Player has many is_favorited_by_scout -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Is Favorited By Scout
+      </li>
+
+      <% @player.is_favorited_by_scout.each do |favorite| %>
+        <li class="list-group-item">
+          <a href="/favorites/<%= favorite.id %>">
+            <%= favorite.scout_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
