@@ -17,8 +17,20 @@
 
       <% @favorites.each do |favorite| %>
       <tr>
-        <td><%= favorite.scout.email %></td>
-        <td><%= favorite.player.scout_id %></td>
+        <td>
+          <% if favorite.scout.present? %>
+            <a href="/scouts/<%= favorite.scout.id %>">
+              <%= favorite.scout.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if favorite.player.present? %>
+            <a href="/players/<%= favorite.player.id %>">
+              <%= favorite.player.scout_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= favorite.name %></td>
         <td>
           <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">Show</a>

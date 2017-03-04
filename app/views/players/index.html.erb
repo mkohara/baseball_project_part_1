@@ -20,7 +20,13 @@
       <% @players.each do |player| %>
       <tr>
         <td><%= player.scout_id %></td>
-        <td><%= player.team.divison_league %></td>
+        <td>
+          <% if player.team.present? %>
+            <a href="/teams/<%= player.team.id %>">
+              <%= player.team.divison_league %>
+            </a>
+          <% end %>
+        </td>
         <td><%= player.name %></td>
         <td><%= player.dob %></td>
         <td><%= player.position %></td>

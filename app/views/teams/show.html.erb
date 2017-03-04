@@ -15,7 +15,13 @@
       <dd><%= @team.when_play %></dd>
 
       <dt>Location</dt>
-      <dd><%= @team.location_id %></dd>
+      <dd>
+        <% if @team.location.present? %>
+          <a href="/locations/<%= @team.location_id %>">
+            <%= @team.location.field %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
