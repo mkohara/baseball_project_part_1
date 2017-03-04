@@ -1,6 +1,11 @@
 class Team < ApplicationRecord
   # Direct associations
 
+  has_many   :away_events,
+             :class_name => "Schedule",
+             :foreign_key => "away_team_id",
+             :dependent => :destroy
+
   has_many   :home_events,
              :class_name => "Schedule",
              :foreign_key => "home_team_id",
