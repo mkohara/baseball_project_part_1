@@ -11,7 +11,6 @@
       <tr>
         <th>Scout</th>
         <th>Player</th>
-        <th>Name</th>
         <th>Actions</th>
       </tr>
 
@@ -27,11 +26,11 @@
         <td>
           <% if assigned_player.player.present? %>
             <a href="/players/<%= assigned_player.player.id %>">
-              <%= assigned_player.player.scout_id %>
+              <%= assigned_player.player.name%>
             </a>
           <% end %>
         </td>
-        <td><%= assigned_player.name %></td>
+
         <td>
           <a href="/assigned_players/<%= assigned_player.id %>" class="btn btn-primary">Show</a>
 
