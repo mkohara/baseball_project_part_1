@@ -46,13 +46,26 @@
       </div>
 
       <!-- Label and input for event_date -->
-      <div class="form-group">
+
+      <!-- Label and input for event_date -->
+      <div class="input-group date" id="datetimepicker1">
         <label for="event_date" class="control-label">
           Event date
         </label>
 
-        <input type="text" id="event_date" name="event_date" placeholder="Event date" class="form-control" value="<%= @schedule.event_date %>">
+        <input type="text" class="form-control" name="event_date" id="event_date" value="<%= @schedule.event_date %>">
+        <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calender"></span></span>
+
       </div>
+
+      <script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker();
+  });
+</script>
+
+
 
       <button class="btn btn-warning">
         Update Schedule

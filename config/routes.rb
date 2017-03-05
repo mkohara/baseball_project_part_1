@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "favorites#index"
+  root :to => "assigned_players#index"
   # Routes for the Location resource:
   # CREATE
   get "/locations/new", :controller => "locations", :action => "new"
