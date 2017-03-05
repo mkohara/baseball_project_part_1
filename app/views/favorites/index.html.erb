@@ -86,7 +86,6 @@
       <tr>
         <th>Scout</th>
         <th>Player</th>
-        <th>Name</th>
         <th>Actions</th>
       </tr>
 
@@ -102,11 +101,10 @@
         <td>
           <% if favorite.player.present? %>
             <a href="/players/<%= favorite.player.id %>">
-              <%= favorite.player.scout_id %>
+              <%= favorite.player.name %>
             </a>
           <% end %>
         </td>
-        <td><%= favorite.name %></td>
         <td>
           <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">Show</a>
 
