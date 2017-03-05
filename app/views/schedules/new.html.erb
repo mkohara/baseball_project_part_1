@@ -24,7 +24,7 @@
           Home team
         </label>
 
-        <%= select_tag(:home_team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @schedule.home_team_id), :class => "form-control") %>
+        <%= select_tag(:home_team_id, options_from_collection_for_select(Team.all, :id, :name, @schedule.home_team_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for away_team_id -->
@@ -33,7 +33,7 @@
           Away team
         </label>
 
-        <%= select_tag(:away_team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @schedule.away_team_id), :class => "form-control") %>
+        <%= select_tag(:away_team_id, options_from_collection_for_select(Team.all, :id, :name, @schedule.away_team_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for location_id -->
