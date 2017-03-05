@@ -109,8 +109,8 @@
         <td><%= favorite.name %></td>
         <td>
           <a href="/favorites/<%= favorite.id %>" class="btn btn-primary">Show</a>
-          
-          <% if current_user == favorite.scout %>
+
+          <% if current_admin_user == favorite.scout %>
             <a href="/favorites/<%= favorite.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
           <% end %>
