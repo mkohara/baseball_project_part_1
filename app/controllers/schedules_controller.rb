@@ -24,7 +24,7 @@ class SchedulesController < ApplicationController
     @schedule.home_team_id = params[:home_team_id]
     @schedule.away_team_id = params[:away_team_id]
     @schedule.location_id = params[:location_id]
-    @schedule.event_date = params[:event_date]
+    @schedule.event_date = Chronic.parse(params[:event_date])
 
     save_status = @schedule.save
 
@@ -54,7 +54,7 @@ class SchedulesController < ApplicationController
     @schedule.home_team_id = params[:home_team_id]
     @schedule.away_team_id = params[:away_team_id]
     @schedule.location_id = params[:location_id]
-    @schedule.event_date = params[:event_date]
+    @schedule.event_date = Chronic.parse(params[:event_date])
 
     save_status = @schedule.save
 

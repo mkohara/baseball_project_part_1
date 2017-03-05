@@ -9,7 +9,7 @@
       <dd>
         <% if @schedule.home_team.present? %>
           <a href="/teams/<%= @schedule.home_team_id %>">
-            <%= @schedule.home_team.divison_league %>
+            <%= @schedule.home_team.name %>
           </a>
         <% end %>
       </dd>
@@ -18,7 +18,7 @@
       <dd>
         <% if @schedule.away_team.present? %>
           <a href="/teams/<%= @schedule.away_team_id %>">
-            <%= @schedule.away_team.divison_league %>
+            <%= @schedule.away_team.name %>
           </a>
         <% end %>
       </dd>
