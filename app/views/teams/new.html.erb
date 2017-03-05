@@ -17,7 +17,13 @@
     <form action="/create_team" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+        <input type="text" name="name" placeholder="Name" class="form-control" value="<%= @team.name %>">
+      </div>
       <!-- Label and input for divison_league -->
       <div class="form-group">
         <label for="divison_league" class="control-label">

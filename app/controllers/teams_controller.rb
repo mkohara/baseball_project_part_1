@@ -23,6 +23,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new
 
+    @team.name = params[:name]
     @team.divison_league = params[:divison_league]
     @team.schedule = params[:schedule]
     @team.when_play = params[:when_play]
@@ -52,11 +53,13 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
+    @team.name = params[:name]
 
     @team.divison_league = params[:divison_league]
     @team.schedule = params[:schedule]
     @team.when_play = params[:when_play]
     @team.location_id = params[:location_id]
+    @team.name = params[:name]
 
     save_status = @team.save
 

@@ -19,7 +19,7 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for scout_id -->
-      <input type="hidden" name="scout_id" value="<%= current_user.id %>">
+      <input type="hidden" name="scout_id" value="<%= current_admin_user%>">
 
       <!-- Label and input for player_id -->
       <div class="form-group">
@@ -27,16 +27,7 @@
           Player
         </label>
 
-        <%= select_tag(:player_id, options_from_collection_for_select(Player.all, :id, :scout_id, @favorite.player_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for name -->
-      <div class="form-group">
-        <label for="name" class="control-label">
-          Name
-        </label>
-
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @favorite.name %>">
+        <%= select_tag(:player_id, options_from_collection_for_select(Player.all, :id, :name, @favorite.player_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
