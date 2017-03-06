@@ -26,6 +26,7 @@ class LocationsController < ApplicationController
     @location.field = params[:field]
     @location.name = params[:name]
     @location.details = params[:details]
+    @location.address =params[:address]
 
     save_status = @location.save
 
@@ -55,6 +56,8 @@ class LocationsController < ApplicationController
     @location.field = params[:field]
     @location.name = params[:name]
     @location.details = params[:details]
+    @location.address =params[:address]
+
 
     save_status = @location.save
 
