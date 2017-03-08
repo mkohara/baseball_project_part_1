@@ -1,0 +1,38 @@
+
+<style>
+#map {
+  width: 500px;
+  height: 400px;
+}
+</style>
+
+  <div id="map"></div>
+  <script>
+  function initMap() {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
+      center: {lat: <%= @location.lat %>, lng: <%= @location.lng %>},
+      zoom: 8
+    });
+
+
+    var infowindow = new google.maps.InfoWindow({
+      content: "Click Content"
+    });
+
+    var marker = new google.maps.Marker({
+      position: {lat: <%= @location.lat %>, lng: <%= @location.lng %>},
+      map: map,
+      title: 'Hello World!',
+      icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+    });
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+
+  };
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+  async defer></script></html>

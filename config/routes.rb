@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # READ
   get "/locations", :controller => "locations", :action => "index"
   get "/locations/:id", :controller => "locations", :action => "show"
-
+  get "map", :controller => "locations", :action => "show_map"
   # UPDATE
   get "/locations/:id/edit", :controller => "locations", :action => "edit"
   post "/update_location/:id", :controller => "locations", :action => "update"

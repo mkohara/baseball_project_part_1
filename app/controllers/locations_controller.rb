@@ -1,9 +1,23 @@
 class LocationsController < ApplicationController
+
+  def address_to_geo(address)
+  require 'open-uri'
+  url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + URI.encode(address)
+  parsed_data = JSON.parse(open(url).read)
+  lat = parsed_data["results"][0]["geometry"]["location"]["lat"]
+  lng = parsed_data["results"][0]["geometry"]["location"]["lng"]
+  return [lat,lng]
+  end
+
   def index
     @q = Location.ransack(params[:q])
     @locations = @q.result(:distinct => true).includes(:schedules, :teams).page(params[:page]).per(10)
 
     render("locations/index.html.erb")
+  end
+
+  def show_map
+    @location=Location.all
   end
 
   def show
@@ -28,6 +42,10 @@ class LocationsController < ApplicationController
     @location.details = params[:details]
     @location.address =params[:address]
 
+    latlng = address_to_geo(params[:address])
+    @location.lat = latlng[0]
+    @location.lng = latlng[1]
+
     save_status = @location.save
 
     if save_status == true
@@ -46,7 +64,7 @@ class LocationsController < ApplicationController
 
   def edit
     @location = Location.find(params[:id])
-
+    
     render("locations/edit.html.erb")
   end
 
@@ -58,7 +76,8 @@ class LocationsController < ApplicationController
     @location.details = params[:details]
     @location.address =params[:address]
 
-
+    @location.lat = params[:lat]
+    @location.lng = params[:lng]
     save_status = @location.save
 
     if save_status == true
