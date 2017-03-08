@@ -1,6 +1,6 @@
-ActiveAdmin.register Schedule do
+ActiveAdmin.register Event do
 
- permit_params :home_team_id, :away_team_id, :location_id, :event_date
+ permit_params :home_team_id, :away_team_id, :location_id, :held_at
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

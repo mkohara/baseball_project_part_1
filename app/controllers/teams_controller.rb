@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @schedule = Schedule.new
+    @event = Event.new
     @player = Player.new
     @team = Team.find(params[:id])
 
@@ -27,6 +27,7 @@ class TeamsController < ApplicationController
     @team.schedule = params[:schedule]
     @team.when_play = params[:when_play]
     @team.location_id = params[:location_id]
+    @team.name = params[:name]
 
     save_status = @team.save
 
@@ -57,6 +58,7 @@ class TeamsController < ApplicationController
     @team.schedule = params[:schedule]
     @team.when_play = params[:when_play]
     @team.location_id = params[:location_id]
+    @team.name = params[:name]
 
     save_status = @team.save
 

@@ -4,12 +4,12 @@ class Team < ApplicationRecord
   belongs_to :location
 
   has_many   :away_events,
-             :class_name => "Schedule",
+             :class_name => "Event",
              :foreign_key => "away_team_id",
              :dependent => :destroy
 
   has_many   :home_events,
-             :class_name => "Schedule",
+             :class_name => "Event",
              :foreign_key => "home_team_id",
              :dependent => :destroy
 

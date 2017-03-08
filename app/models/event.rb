@@ -1,4 +1,4 @@
-class Schedule < ApplicationRecord
+class Event < ApplicationRecord
   # Direct associations
 
   belongs_to :location

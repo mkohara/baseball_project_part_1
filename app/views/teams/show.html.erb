@@ -23,6 +23,9 @@
         <% end %>
       </dd>
 
+      <dt>Name</dt>
+      <dd><%= @team.name %></dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -129,19 +132,19 @@
         Home Events
       </li>
 
-      <% @team.home_events.each do |schedule| %>
+      <% @team.home_events.each do |event| %>
         <li class="list-group-item">
-          <a href="/schedules/<%= schedule.id %>">
-            <%= schedule.home_team_id %>
+          <a href="/events/<%= event.id %>">
+            <%= event.home_team_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/schedules/<%= schedule.id %>" class="btn btn-primary">
+            <a href="/events/<%= event.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/schedules/<%= schedule.id %>/edit" class="btn btn-warning">
+            <a href="/events/<%= event.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_schedule/<%= schedule.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
@@ -149,7 +152,7 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_schedule" method="post">
+        <form action="/create_event" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -180,17 +183,17 @@
         <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :field), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for event_date -->
+      <!-- Label and input for held_at -->
       <div class="form-group">
-        <label for="event_date" class="control-label">
-          Event date
+        <label for="held_at" class="control-label">
+          Held at
         </label>
 
-        <input type="text" id="event_date" name="event_date" placeholder="Event date" class="form-control" value="">
+        <input type="text" id="held_at" name="held_at" placeholder="Held at" class="form-control" value="">
       </div>
 
       <button class="btn btn-block btn-success">
-        Create Schedule
+        Create Event
       </button>
     </form>
       </li>
@@ -207,19 +210,19 @@
         Away Events
       </li>
 
-      <% @team.away_events.each do |schedule| %>
+      <% @team.away_events.each do |event| %>
         <li class="list-group-item">
-          <a href="/schedules/<%= schedule.id %>">
-            <%= schedule.home_team_id %>
+          <a href="/events/<%= event.id %>">
+            <%= event.home_team_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/schedules/<%= schedule.id %>" class="btn btn-primary">
+            <a href="/events/<%= event.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/schedules/<%= schedule.id %>/edit" class="btn btn-warning">
+            <a href="/events/<%= event.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_schedule/<%= schedule.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
