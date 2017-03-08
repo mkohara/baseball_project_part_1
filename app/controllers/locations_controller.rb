@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
   end
 
   def show_map
-    @location=Location.all
+    @locations=Location.all
   end
 
   def show

@@ -1,38 +1,49 @@
-
 <style>
 #map {
-  width: 500px;
-  height: 400px;
+  width: 800px;
+  height: 600px;
 }
 </style>
 
-  <div id="map"></div>
-  <script>
-  function initMap() {
-    var mapDiv = document.getElementById('map');
-    var map = new google.maps.Map(mapDiv, {
-      center: {lat: <%= @location.lat %>, lng: <%= @location.lng %>},
-      zoom: 8
-    });
+<div id="map"></div>
+<script>
+function initMap() {
+  //initiate a new map
+  var mapDiv = document.getElementById('map');
+  var map = new google.maps.Map(mapDiv);
 
+//an empty bounds variable for setting automatic zoom levels
+var bounds = new google.maps.LatLngBounds();
 
-    var infowindow = new google.maps.InfoWindow({
-      content: "Click Content"
-    });
+  <%  @locations.each do |location|   %>
+//make info window
+  var infowindow_<%= location.id %> = new google.maps.InfoWindow({
+    content: "<b><%= location.field %></b>" +
+    "<li> <%= location.address %></li>"
+  });
+//make marker
+  var marker_<%= location.id %> = new google.maps.Marker({
+    position: {lat: <%= location.lat %>, lng: <%= location.lng %>},
+    map: map,
+    title: '<%= location.field %>',
+    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+  });
+//click to show info window
+  marker_<%= location.id %>.addListener('click', function() {
+    infowindow_<%= location.id %>.open(map, marker_<%= location.id %>);
+  });
+  //rightclick to edit place
+  marker_<%= location.id %>.addListener('rightclick', function() {
+  window.location.href = 'http://localhost:3000/places/<%= location.id %>/edit'
+  });
 
-    var marker = new google.maps.Marker({
-      position: {lat: <%= @location.lat %>, lng: <%= @location.lng %>},
-      map: map,
-      title: 'Hello World!',
-      icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-    });
+  bounds.extend(new google.maps.LatLng(<%= location.lat %>, <%= location.lng %>));
 
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
+<% end %>
+// Size map to fit bounds
+  map.fitBounds(bounds);
+};
 
-  };
-
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-  async defer></script></html>
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+async defer></script></html>
