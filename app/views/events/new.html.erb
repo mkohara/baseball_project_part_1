@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @schedule.errors.any? %>
-  <% @schedule.errors.full_messages.each do |message| %>
+<% if @event.errors.any? %>
+  <% @event.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,12 +9,12 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Schedule #<%= @schedule.id %></h3>
+  <h3>Add Event</h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_schedule/<%= @schedule.id %>" method="post">
+    <form action="/create_event" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -24,7 +24,7 @@
           Home team
         </label>
 
-        <%= select_tag(:home_team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @schedule.home_team_id), :class => "form-control") %>
+        <%= select_tag(:home_team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @event.home_team_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for away_team_id -->
@@ -33,7 +33,7 @@
           Away team
         </label>
 
-        <%= select_tag(:away_team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @schedule.away_team_id), :class => "form-control") %>
+        <%= select_tag(:away_team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @event.away_team_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for location_id -->
@@ -42,23 +42,23 @@
           Location
         </label>
 
-        <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :field, @schedule.location_id), :class => "form-control") %>
+        <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :field, @event.location_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for event_date -->
+      <!-- Label and input for held_at -->
       <div class="form-group">
-        <label for="event_date" class="control-label">
-          Event date
+        <label for="held_at" class="control-label">
+          Held at
         </label>
 
-        <input type="text" id="event_date" name="event_date" placeholder="Event date" class="form-control" value="<%= @schedule.event_date %>">
+        <input type="text" id="held_at" name="held_at" placeholder="Held at" class="form-control" value="<%= @event.held_at %>">
       </div>
 
-      <button class="btn btn-warning">
-        Update Schedule
+      <button class="btn btn-success">
+        Create Event
       </button>
       or
-      <a href="/schedules/<%= @schedule.id %>">Cancel</a>
+      <a href="/events">Cancel</a>
     </form>
   </div>
 </div>

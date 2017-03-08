@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h3>Event #<%= @event.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Home team</dt>
+      <dd>
+        <% if @event.home_team.present? %>
+          <a href="/teams/<%= @event.home_team_id %>">
+            <%= @event.home_team.divison_league %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Away team</dt>
+      <dd>
+        <% if @event.away_team.present? %>
+          <a href="/teams/<%= @event.away_team_id %>">
+            <%= @event.away_team.divison_league %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Location</dt>
+      <dd>
+        <% if @event.location.present? %>
+          <a href="/locations/<%= @event.location_id %>">
+            <%= @event.location.field %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Held at</dt>
+      <dd><%= @event.held_at %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/events" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/events/<%= @event.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_event/<%= @event.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

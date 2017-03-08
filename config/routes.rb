@@ -19,21 +19,21 @@ Rails.application.routes.draw do
   get "/delete_location/:id", :controller => "locations", :action => "destroy"
   #------------------------------
 
-  # Routes for the Schedule resource:
+  # Routes for the Event resource:
   # CREATE
-  get "/schedules/new", :controller => "schedules", :action => "new"
-  post "/create_schedule", :controller => "schedules", :action => "create"
+  get "/events/new", :controller => "events", :action => "new"
+  post "/create_event", :controller => "events", :action => "create"
 
   # READ
-  get "/schedules", :controller => "schedules", :action => "index"
-  get "/schedules/:id", :controller => "schedules", :action => "show"
+  get "/events", :controller => "events", :action => "index"
+  get "/events/:id", :controller => "events", :action => "show"
 
   # UPDATE
-  get "/schedules/:id/edit", :controller => "schedules", :action => "edit"
-  post "/update_schedule/:id", :controller => "schedules", :action => "update"
+  get "/events/:id/edit", :controller => "events", :action => "edit"
+  post "/update_event/:id", :controller => "events", :action => "update"
 
   # DELETE
-  get "/delete_schedule/:id", :controller => "schedules", :action => "destroy"
+  get "/delete_event/:id", :controller => "events", :action => "destroy"
   #------------------------------
 
   # Routes for the Team resource:
