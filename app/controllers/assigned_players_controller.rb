@@ -1,10 +1,10 @@
 class AssignedPlayersController < ApplicationController
-  before_action :current_user_must_be_assigned_player_user, :only => [:edit, :update, :destroy]
+  before_action :current_user_must_be_assigned_player_scout, :only => [:edit, :update, :destroy]
 
   def current_user_must_be_assigned_player_scout
     assigned_player = AssignedPlayer.find(params[:id])
 
-    unless current_user == assigned_player.scout
+    unless current_admin_user == assigned_player.scout
       redirect_to :back, :alert => "You are not authorized for that."
     end
   end

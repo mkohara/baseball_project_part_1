@@ -5,26 +5,19 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Scout</dt>
-      <dd>
-        <% if @assigned_player.scout.present? %>
-          <a href="/scouts/<%= @assigned_player.scout_id %>">
-            <%= @assigned_player.scout.email %>
-          </a>
-        <% end %>
-      </dd>
+
 
       <dt>Player</dt>
       <dd>
         <% if @assigned_player.player.present? %>
           <a href="/players/<%= @assigned_player.player_id %>">
-            <%= @assigned_player.player.scout_id %>
+            <%= @assigned_player.player_id %>
           </a>
         <% end %>
       </dd>
 
       <dt>Name</dt>
-      <dd><%= @assigned_player.name %></dd>
+      <dd><%= @assigned_player.player.name %></dd>
 
     </dl>
 
@@ -32,7 +25,7 @@
       <a href="/assigned_players" class="btn btn-primary">
         Back
       </a>
-      <% if current_user == @assigned_player.scout %>
+      <% if current_admin_user == @assigned_player.scout %>
         <a href="/assigned_players/<%= @assigned_player.id %>/edit" class="btn btn-warning">
           Edit
         </a>
