@@ -64,7 +64,7 @@ class LocationsController < ApplicationController
 
   def edit
     @location = Location.find(params[:id])
-    
+
     render("locations/edit.html.erb")
   end
 
@@ -78,6 +78,9 @@ class LocationsController < ApplicationController
 
     @location.lat = params[:lat]
     @location.lng = params[:lng]
+    latlng = address_to_geo(params[:address])
+    @location.lat = latlng[0]
+    @location.lng = latlng[1]
     save_status = @location.save
 
     if save_status == true

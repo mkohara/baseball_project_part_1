@@ -197,13 +197,13 @@
 
 
     var infowindow = new google.maps.InfoWindow({
-      content: "Click Content"
+      content: "'<%= @location.field %>'"
     });
 
     var marker = new google.maps.Marker({
       position: {lat: <%= @location.lat %>, lng: <%= @location.lng %>},
       map: map,
-      title: 'Hello World!',
+      title: '<%= @location.field %>',
       icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     });
 
