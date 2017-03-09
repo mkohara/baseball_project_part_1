@@ -5,7 +5,6 @@ class CreateTeams < ActiveRecord::Migration
       t.string :schedule
       t.string :when_play
       t.integer :location_id
-      t.string :name
 
       t.timestamps
 
