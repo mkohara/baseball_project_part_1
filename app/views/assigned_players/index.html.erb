@@ -16,13 +16,7 @@
 
       <% @assigned_players.each do |assigned_player| %>
       <tr>
-        <td>
-          <% if assigned_player.scout.present? %>
-            <a href="/scouts/<%= assigned_player.scout.id %>">
-              <%= assigned_player.scout.id %>
-            </a>
-          <% end %>
-        </td>
+        
         <td>
           <% if assigned_player.player.present? %>
             <a href="/players/<%= assigned_player.player.id %>">

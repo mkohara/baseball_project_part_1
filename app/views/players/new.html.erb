@@ -19,13 +19,7 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for scout_id -->
-      <div class="form-group">
-        <label for="scout_id" class="control-label">
-          Scout
-        </label>
-
-        <input type="text" id="scout_id" name="scout_id" placeholder="Scout" class="form-control" value="<%= @player.scout_id %>">
-      </div>
+      
 
       <!-- Label and input for team_id -->
       <div class="form-group">
@@ -33,7 +27,7 @@
           Team
         </label>
 
-        <%= select_tag(:team_id, options_from_collection_for_select(Team.all, :id, :divison_league, @player.team_id), :class => "form-control") %>
+        <%= select_tag(:team_id, options_from_collection_for_select(Team.all, :id, :name, @player.team_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for name -->
